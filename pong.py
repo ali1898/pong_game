@@ -1,5 +1,16 @@
 import pygame, sys
 
+def animate_ball():
+    global ball_speed_x, ball_speed_y
+    ball.x += ball_speed_x
+    ball.y += ball_speed_y
+
+    if ball.bottom >= screen_height or ball.top <= 0:
+        ball_speed_y *= -1
+    
+    if ball.right >= screen_width or ball.left <= 0:
+        ball_speed_x *= -1
+
 pygame.init()
 
 screen_width = 1280
@@ -36,8 +47,7 @@ while True:
                 sys.exit()
     
     # change the positions of the game objects
-    ball.x += ball_speed_x
-    ball.y += ball_speed_y
+    animate_ball()
 
     # Draw the game objects
     screen.fill("black")
