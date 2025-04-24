@@ -19,6 +19,9 @@ cpu.centery = screen_height/2
 player = pygame.Rect(0, 0, 20, 100)
 player.midright = (screen_width, screen_height/2)
 
+ball_speed_x = 6
+ball_speed_y = 6
+
 # Game loop
 while True:
     # check for events
@@ -32,7 +35,12 @@ while True:
                 pygame.quit()
                 sys.exit()
     
+    # change the positions of the game objects
+    ball.x += ball_speed_x
+    ball.y += ball_speed_y
+
     # Draw the game objects
+    screen.fill("black")
     pygame.draw.aaline(screen, "white", (screen_width/2, 0), (screen_width/2, screen_height))
     pygame.draw.ellipse(screen, "white", ball)
     pygame.draw.rect(screen, "white", cpu)
